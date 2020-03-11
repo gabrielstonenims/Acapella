@@ -1,0 +1,23 @@
+{% extends 'etblog/base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+<div class="row">
+  <div class="col-md-4 mr-auto ml-auto">
+    <div class="box">
+      <form method="post" id="theform">
+        {% csrf_token %}
+        <fieldset class="form-group">
+          <legend class="border-bottom mb-3 mt-2">Join Now</legend>
+          {{ form|crispy }}
+        </fieldset>
+        <div class="form-group">
+          <button  type="submit" id="main_reg_butt">Register</button>
+        </div>
+        <small>Already have an account?<a class="ml-2" href="{% url 'login'%}">Sign In</a><a class="ml-2" href="{% url 'mainhome'%}"><i class="fas fa-home"></i></a></small>
+      </form>
+    </div>
+  </div>
+</div>
+
+<br>
+{% endblock %}

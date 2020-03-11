@@ -1,0 +1,34 @@
+{% extends 'etblog/base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+<br>
+<div class="row pt-3">
+    <div class="col-md-4 ml-auto mr-auto" >
+      <div class="box pt-4">
+        <form method="post">
+          {% csrf_token %}
+          <fieldset class="form-group">
+            <legend class="border-bottom mb-3 text-center">Login</legend>
+            {{ form|crispy}}
+          </fieldset>
+          <div class="form-group">
+            <button id="main_login_but" type="submit">Login</button>
+            <small>
+              <a class="ml-2" href="{% url 'password_reset' %}">Forgot Password?</a>
+            </small>
+          </div>
+          <small>Need an account?<a class="ml-2" href="{% url 'register'%}">Register Now</a><a class="ml-2" href="{% url 'mainhome'%}"><i class="fas fa-home"></i></a></small>
+        </form>
+        <h4 class="animated bounce mt-3 mb-2 ml-4">OR <i class="far fa-hand-point-down"></i></h4>
+        <div>
+          <a href="{% url 'social:begin' 'google-oauth2'%}" id="google-signin">Google+</a>
+          <a href="{% url 'social:begin' 'facebook'%}" id="facebook-signin">Facebook</a>
+          <a href="{% url 'social:begin' 'github'%}" id="github-signin">Github<i class="fab fa-github"></i></a>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+<br>
+{% endblock %}
